@@ -34,7 +34,6 @@ const Card = ({ foodItem }) => {
 
   const handleAddToCart = async () => {
     if (data.cart) {
-      // Check if data.cart is defined
       const existingCartItemIndex = data.cart.findIndex(
         item => item.id === foodItem._id && item.size === size
       )

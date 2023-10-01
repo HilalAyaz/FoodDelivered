@@ -5,7 +5,6 @@ const { Schema } = mongoose
 const OrderSchema= new Schema({
     email: {
         type: String,
-        required: true
     },
     order_data: {
         type: Array,

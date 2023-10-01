@@ -11,15 +11,7 @@ const orderData = require('./routes/orderData')
 const dbConnect = require('./database/database')
 dbConnect()
 
-app.use(
-  cors({
-    origin: 'http://localhost:3000',
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    credentials: true,
-    optionsSuccessStatus: 204,
-    allowedHeaders: 'Origin, X-Requested-With, Content-Type, Accept'
-  })
-)
+app.use(cors())
 
 app.use(express.json())
 
