@@ -1,10 +1,14 @@
-const express = require('express')
-const Order = require('../models/orders')
-const router = express.Router()
+const express = require('express');
+const Order = require('../models/orders');
+const router = express.Router();
 
 router.post('/orderData', async (req, res) => {
   let data = req.body.order_data;
-  let orderDate = new Date(); 
+  let orderDate = new Date();
+
+  // Format the date and time as separate strings
+  const formattedOrderDate = orderDate.toLocaleDateString();
+  const formattedTime = orderDate.toLocaleTimeString();
 
   try {
     let eId = await Order.findOne({ email: req.body.email });
@@ -12,12 +16,12 @@ router.post('/orderData', async (req, res) => {
     if (eId === null) {
       await Order.create({
         email: req.body.email,
-        order_data: [{ items: data, orderDate: orderDate }] 
+        order_data: [{ items: data, orderDate: formattedOrderDate, orderTime: formattedTime }]
       });
     } else {
       await Order.findOneAndUpdate(
         { email: req.body.email },
-        { $push: { order_data: { items: data, orderDate: orderDate } } } 
+        { $push: { order_data: { items: data, orderDate: formattedOrderDate, orderTime: formattedTime } } }
       );
     }
     res.json({ success: true });
@@ -27,17 +31,13 @@ router.post('/orderData', async (req, res) => {
   }
 });
 
-
-
 router.post('/myOrderData', async (req, res) => {
-    try {
-    let myData = await Order.findOne({'email': req.body.email})
-    res.json({orderData:myData})
-    } catch (err){
-        res.status(500).send({'error': err.message})    
-    }
+  try {
+    let myData = await Order.findOne({ email: req.body.email });
+    res.json({ orderData: myData });
+  } catch (err) {
+    res.status(500).send({ error: err.message });
+  }
+});
 
-})
-
-
-module.exports = router
+module.exports = router;

@@ -32,7 +32,7 @@ const Order = () => {
     fetchMyOrder();
   }, []);
 
-  // Function to format date and time
+  // format date and time
   const formatDateAndTime = (dateString) => {
     const date = new Date(dateString);
     const formattedDate = date.toDateString();
