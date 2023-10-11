@@ -25,7 +25,7 @@ router.post(
       let userData = await User.findOne({ email })
       if (!userData) {
         return res
-          .status(400)
+          .status(401)
           .send({ error: 'Try to login with a correct email' })
       }
 
@@ -36,7 +36,7 @@ router.post(
 
       if (!comparePassword) {
         return res
-          .status(400)
+          .status(401)
           .send({ error: 'Try to login with a correct password' })
       }
       const data = {
@@ -49,7 +49,7 @@ router.post(
     } catch (err) {
       console.log(err, 'Login with correct credentials')
       res
-        .status(500)
+        .status(401)
         .json({ success: false, error: 'Login with correct credentials' })
     }
   }
