@@ -14,7 +14,7 @@ const Signup = () => {
     e.preventDefault()
     try {
       const response = await axios.post(
-        'https://food-deliverybackend.vercel.app/api/createUser',
+        'http://localhost:5000/api/createUser',
         {
           name: formData.name,
           email: formData.email,

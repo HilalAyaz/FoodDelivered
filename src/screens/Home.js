@@ -9,7 +9,7 @@ const Home = () => {
 
   const loadData = async () => {
     try {
-      const response = await fetch("https://food-deliverybackend.vercel.app/api/menuItems", {
+      const response = await fetch("http://localhost:5000/api/menuItems", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

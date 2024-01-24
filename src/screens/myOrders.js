@@ -10,7 +10,7 @@ const Order = () => {
       const userEmail = localStorage.getItem('userEmail');
       try {
         const response = await axios.post(
-          'https://food-deliverybackend.vercel.app/api/myOrderData',
+          'http://localhost:5000/api/myOrderData',
           { email: userEmail },
           {
             headers: {

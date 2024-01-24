@@ -22,7 +22,7 @@ const Cart = () => {
 
     try {
       const response = await axios.post(
-        "https://food-deliverybackend.vercel.app/api/orderData",
+        "http://localhost:5000/api/orderData",
         {
           email: userEmail,
           order_data: cart,

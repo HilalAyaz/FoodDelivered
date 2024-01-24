@@ -12,7 +12,7 @@ const Login = () => {
     e.preventDefault()
     try {
       const response = await axios.post(
-        'https://food-deliverybackend.vercel.app/api/loginUser',
+        'http://localhost:5000/api/loginUser',
         {
           email: formData.email,
           password: formData.password
