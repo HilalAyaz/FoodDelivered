@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 const Signup = () => {
-  const navigate= useNavigate()
+  const navigate = useNavigate()
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -14,7 +14,7 @@ const Signup = () => {
     e.preventDefault()
     try {
       const response = await axios.post(
-        'http://localhost:5000/api/createUser',
+        'https://food-deliverybackend.vercel.app/api/createUser',
         {
           name: formData.name,
           email: formData.email,
