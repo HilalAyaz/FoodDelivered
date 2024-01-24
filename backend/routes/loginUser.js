@@ -10,7 +10,6 @@ const jwt = require('jsonwebtoken')
 
 router.post(
   '/loginUser',
-
   body('email', 'Enter a valid Email').isEmail(),
   body('password', 'Password is incorrect').isLength({ min: 6 }),
   async (req, res) => {
